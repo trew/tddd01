@@ -52,5 +52,30 @@ namespace SprakTest
                 return new KeyValuePair<string,string>("","");
             }
         }
+        private Boolean checkAnagram( string word1, string word2 )
+        {
+
+
+           char[] a = word1.ToCharArray();
+           char[] b = word2.ToCharArray();
+           if (a.Length != b.Length)
+           {
+              return false;
+           }
+           Array.Sort(a);
+           Array.Sort(b);
+           for (int i = 0; i < a.Length; i++)
+           {
+              if (a[i] == b[i])
+              {
+                 continue;
+              }
+              else
+              {
+                 return false;
+              }
+           }
+           return true;
+        }
     }
 }

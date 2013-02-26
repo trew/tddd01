@@ -154,12 +154,9 @@ namespace SprakTest
             text2.Font = new Font(text2.Font.FontFamily, 30f);
             newTab.Controls.Add(text2);
 
-            text1.Text = "Första ordet";
-            text2.Text = "Andra ordet";
-
+            KeyValuePair<string, string> nextPair = tests[newTab.Name].GetNextPair();
+            ShowNewPair(newTab, nextPair);
         }
-
-
 
         private void EvalAnagram(object sender, EventArgs e)
         {

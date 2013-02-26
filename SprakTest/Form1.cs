@@ -14,12 +14,13 @@ namespace SprakTest
     {
         private TabControl itemsTab;
         private Dictionary<string, Test> tests;
+        private Logger logger;
 
         public Form1()
         {
             InitializeComponent();
             tests = new Dictionary<string, Test>();
-           
+            logger = new Logger();   
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -183,19 +184,21 @@ namespace SprakTest
             if (nextPair.Key.Equals("") && nextPair.Value.Equals(""))
             {
                 // test over, do something
-               Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
-               text1.Text = "Test complete!";
-               List<Button> buttons = new List<Button>();
-               foreach (Control c in tab.Controls)
-               {
-                  if (c is Button)
-                     buttons.Add((Button) c);
-               }
-               foreach (Button b in buttons)
-               {
-                  tab.Controls.Remove(b);
-               }
-               //tab.Controls.Remove((Button)sender);
+                Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
+                text1.Text = "Test complete!";
+                List<Button> buttons = new List<Button>();
+                foreach (Control c in tab.Controls)
+                {
+                   if (c is Button)
+                      buttons.Add((Button) c);
+                }
+                foreach (Button b in buttons)
+                {
+                   tab.Controls.Remove(b);
+                }
+                //tab.Controls.Remove((Button)sender);
+                int gender = man_radiobutton.Checked ? 0 : 1;
+                logger.save(tab.Name, (int)age_box.Value, gender, tests[tab.Name]);
             }
         }
 

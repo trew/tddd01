@@ -8,11 +8,12 @@ namespace SprakTest
     class Anagram : ITest
     {
         private List<KeyValuePair<string, string>> wordPairs;
-        //private Dictionary<string, string> wordPairs;
+        private List<String> answers;
 
         public Anagram(string fileName)
         {
             wordPairs = new List<KeyValuePair<string, string>>();
+            answers = new List<string>();
             LoadWords(fileName);
         }
 
@@ -36,10 +37,12 @@ namespace SprakTest
             answer = (value == 0) ? false : true;
             if (isAnagram == answer)
             {
+               answers.Add(word1 + " : " + word2 + " Correct");
                return true;
             }
             else
             {
+               answers.Add(word1 + " : " + word2 + " Wrong");
                return false;
             }
         }
@@ -56,7 +59,10 @@ namespace SprakTest
                 return new KeyValuePair<string,string>("","");
             }
         }
-
+        public List<String> getAnswers()
+        {
+           return answers;
+        }
         private Boolean checkAnagram( string word1, string word2 )
         {
            string lowercase_word1 = word1.ToLower();

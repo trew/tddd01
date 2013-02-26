@@ -8,10 +8,12 @@ namespace SprakTest
    class Levenshtein : ITest
    {
       private List<KeyValuePair<string, string>> wordPairs;
+      private List<String> answers;
 
       public Levenshtein( string fileName )
       {
          wordPairs = new List<KeyValuePair<string, string>>();
+         answers = new List<string>();
          LoadWords(fileName);
       }
 
@@ -32,10 +34,12 @@ namespace SprakTest
          int result = calcLeven(word1, word2);
          if (value == result)
          {
+            answers.Add(word1 + " : " + word2 + " Correct");
             return true;
          }
          else
          {
+            answers.Add(word1 + " : " + word2 + " Wrong");
             return false;
          }
       }
@@ -53,7 +57,10 @@ namespace SprakTest
               return new KeyValuePair<string, string>("", "");
           }
       }
-
+      public List<String> getAnswers()
+      {
+         return answers;
+      }
       private int calcLeven( string s, string t )
       {
          int n = s.Length;

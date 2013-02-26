@@ -30,7 +30,7 @@ namespace SprakTest
         }
         public abstract bool Evaluate(string word1, string word2, int value);
 
-        public List<String> Answers { get { return Answers; } }
+        public List<String> Answers { get { return answers; } }
 
         public void addAnswer(string answer)
         {

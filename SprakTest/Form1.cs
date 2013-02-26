@@ -13,12 +13,12 @@ namespace SprakTest
     public partial class Form1 : Form
     {
         private TabControl itemsTab;
-        private Dictionary<string, ITest> tests;
+        private Dictionary<string, Test> tests;
 
         public Form1()
         {
             InitializeComponent();
-            tests = new Dictionary<string, ITest>();
+            tests = new Dictionary<string, Test>();
            
         }
 

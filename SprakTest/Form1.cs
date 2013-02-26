@@ -19,6 +19,7 @@ namespace SprakTest
         public Form1()
         {
             InitializeComponent();
+
             tests = new Dictionary<string, Test>();
             logger = new Logger();   
         }
@@ -83,6 +84,8 @@ namespace SprakTest
             System.Windows.Forms.Button b;
             System.Windows.Forms.TrackBar tb;
 
+            Size buttonSize = new Size(175, 40);
+
             switch (fileExtension)
             {
                 case "ls":
@@ -91,7 +94,7 @@ namespace SprakTest
                 
                     // Trackbar
                     tb = new TrackBar();
-                    tb.Location = new System.Drawing.Point(150, 150);
+                    tb.Location = new System.Drawing.Point(250, 350);
                     tb.Name = newTab.Name + "Trackbar";
                     tb.Width = 500;
                     tb.Minimum = int.Parse(values[0]);
@@ -104,14 +107,15 @@ namespace SprakTest
                     Label trackValueLabel = new Label();
                     trackValueLabel.Name = newTab.Name + "TrackbarLabel";
                     trackValueLabel.Text = tb.Value.ToString();
+                    trackValueLabel.Font = new Font(trackValueLabel.Font.FontFamily, 14f);
                     trackValueLabel.Location = new System.Drawing.Point(tb.Location.X - 30, tb.Location.Y);
                     newTab.Controls.Add(trackValueLabel);
 
                     // Button
                     b = new Button();
-                    b.Location = new System.Drawing.Point(tb.Location.X + (tb.Width / 2), tb.Location.Y + 60);
+                    b.Location = new System.Drawing.Point(tb.Location.X - (buttonSize.Width/2) + (tb.Width / 2), tb.Location.Y + 60);
                     b.Name = "button1";
-                    b.Size = new System.Drawing.Size(75, 23);
+                    b.Size = buttonSize;
                     b.Text = "Nästa";
                     b.UseVisualStyleBackColor = true;
 
@@ -121,15 +125,18 @@ namespace SprakTest
 
                 case "ag":
                     int i = 0;
+                    int numButtons = controls.Length;
+                    int totalButtonWidth = (numButtons * buttonSize.Width) + (((numButtons - 1) * 10));
+                    int leftStartPos = (1000 - totalButtonWidth)/2;
+
                     foreach (string buttonText in controls)
                     {
                         b = new Button();
-
-                        b.Location = new System.Drawing.Point(128 + i, 130);
-                        i += 80;
+                        b.Location = new System.Drawing.Point(leftStartPos + i, 350);
+                        i += buttonSize.Width + 10;
 
                         b.Name = "button1";
-                        b.Size = new System.Drawing.Size(75, 23);
+                        b.Size = buttonSize;
                         b.Text = buttonText;
                         b.UseVisualStyleBackColor = true;
 
@@ -143,20 +150,24 @@ namespace SprakTest
             // Texts
             Label text1 = new Label();
             text1.BorderStyle = BorderStyle.FixedSingle;
-            text1.TextAlign = ContentAlignment.MiddleCenter;
             text1.Name = newTab.Name + "text1";
-            text1.Location = new System.Drawing.Point(50, 30);
-            text1.AutoSize = true;
+            text1.Location = new System.Drawing.Point(200, 50);
+            text1.Size = new Size(600, 70);
+            text1.TextAlign = ContentAlignment.MiddleCenter;
             text1.Font = new Font(text1.Font.FontFamily, 30f);
             newTab.Controls.Add(text1);
 
             Label text2 = new Label();
             text2.BorderStyle = BorderStyle.FixedSingle;
             text2.Name = newTab.Name + "text2";
-            text2.Location = new System.Drawing.Point(550, 30);
-            text2.AutoSize = true;
+            text2.Location = new System.Drawing.Point(200, 150);
+            text2.Size = new Size(600, 70);
+            text2.TextAlign = ContentAlignment.MiddleCenter;
             text2.Font = new Font(text2.Font.FontFamily, 30f);
             newTab.Controls.Add(text2);
+
+            text1.Text = "Klicka på en knapp";
+            text2.Text = "för att starta testet";
 
             KeyValuePair<string, string> nextPair = tests[newTab.Name].GetNextPair();
             ShowNewPair(newTab, nextPair);
@@ -170,7 +181,7 @@ namespace SprakTest
             // Evaluate answer, see if correct. Save stats
             string word1 = ((Label)tab.Controls.Find(tab.Name + "text1", false)[0]).Text;
             string word2 = ((Label)tab.Controls.Find(tab.Name + "text2", false)[0]).Text;
-
+            
             int answer = ((Button)sender).Text.Equals("Ja") ? 1 : 0;
 
             bool CorrectAnswer = tests[tab.Name].Evaluate(word1, word2, answer);
@@ -223,6 +234,11 @@ namespace SprakTest
                 // test over, do something
                Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
                text1.Text = "Test complete!";
+               foreach (Control c in tab.Controls)
+               {
+                  if (c is TrackBar)
+                     tab.Controls.Remove((TrackBar) c);
+               }
                tab.Controls.Remove((Button)sender);
             }
 

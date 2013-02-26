@@ -1,4 +1,4 @@
-namespace SprakTest
+﻿namespace SprakTest
 {
     partial class Form1
     {
@@ -28,6 +28,7 @@ namespace SprakTest
         /// </summary>
         private void InitializeComponent()
         {
+
          this.TestTabs = new System.Windows.Forms.TabControl();
          this.Profile = new System.Windows.Forms.TabPage();
          this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -197,7 +198,6 @@ namespace SprakTest
          this.splitContainer1.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.age_box)).EndInit();
          this.ResumeLayout(false);
-
         }
 
         #endregion

@@ -36,8 +36,17 @@ namespace SprakTest
 
         public bool Evaluate(string word1, string word2, int value)
         {
-            // run magic algorithm. save stats?
-            return true;
+            bool isAnagram = checkAnagram(word1, word2) ;
+            bool answer;
+            answer = (value == 0) ? false : true;
+            if (isAnagram == answer)
+            {
+               return true;
+            }
+            else
+            {
+               return false;
+            }
         }
         public KeyValuePair<string, string> GetNextPair()
         {

@@ -20,10 +20,11 @@ namespace SprakTest
         {
             string[] lines = System.IO.File.ReadAllLines(fileName);
 
-            foreach (string wordPair in lines.ToList().GetRange(1, lines.Length-2))
+            foreach (string wordPair in lines.ToList().GetRange(1, lines.Length-1))
             {
+                Console.WriteLine("Adding " + wordPair);
                 string[] words = wordPair.Split(':');
-                wordPairs.Insert(wordPairs.Count - 1, new KeyValuePair<string, string>(words[0], words[1]));
+                wordPairs.Insert(wordPairs.Count, new KeyValuePair<string, string>(words[0], words[1]));
                 
             }
 
@@ -35,13 +36,21 @@ namespace SprakTest
 
         public bool Evaluate(string word1, string word2, int value)
         {
+            // run magic algorithm. save stats?
             return true;
         }
         public KeyValuePair<string, string> GetNextPair()
         {
-            KeyValuePair<string, string> firstPair = wordPairs.First();
-            wordPairs.RemoveAt(0);
-            return firstPair;
+            if (wordPairs.Count != 0)
+            {
+                KeyValuePair<string, string> firstPair = wordPairs.First();
+                wordPairs.RemoveAt(0);
+                return firstPair;
+            }
+            else
+            {
+                return new KeyValuePair<string,string>("","");
+            }
         }
     }
 }

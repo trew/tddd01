@@ -7,11 +7,12 @@ namespace SprakTest
 {
     class Anagram : ITest
     {
-        private Dictionary<string, string> wordPairs;
+        private List<KeyValuePair<string, string>> wordPairs;
+        //private Dictionary<string, string> wordPairs;
 
         public Anagram(string fileName)
         {
-            wordPairs = new Dictionary<string, string>();
+            wordPairs = new List<KeyValuePair<string, string>>();
             LoadWords(fileName);
         }
 
@@ -22,12 +23,13 @@ namespace SprakTest
             foreach (string wordPair in lines.ToList().GetRange(1, lines.Length-2))
             {
                 string[] words = wordPair.Split(':');
-                wordPairs.Add(words[0], words[1]);
+                wordPairs.Insert(wordPairs.Count - 1, new KeyValuePair<string, string>(words[0], words[1]));
+                
             }
 
-            foreach (string key in wordPairs.Keys)
+            foreach (KeyValuePair<string, string> kvp in wordPairs)
             {
-                Console.WriteLine(key + " " + wordPairs[key]);
+                Console.WriteLine(kvp.Key + " " + kvp.Value);
             }
         }
 
@@ -35,9 +37,11 @@ namespace SprakTest
         {
             return true;
         }
-        public string[] GetNextPair()
+        public KeyValuePair<string, string> GetNextPair()
         {
-            return new string[] {"asdf","asdf"};
+            KeyValuePair<string, string> firstPair = wordPairs.First();
+            wordPairs.RemoveAt(0);
+            return firstPair;
         }
     }
 }

@@ -9,6 +9,6 @@ namespace SprakTest
     {
         void LoadWords(string fileName);
         bool Evaluate(string word1, string word2, int value);
-        string[] GetNextPair();
+        KeyValuePair<string, string> GetNextPair();
     }
 }

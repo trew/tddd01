@@ -15,7 +15,11 @@ namespace SprakTest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Form1 mainForm = new Form1();
+            mainForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            Application.Run(mainForm);
         }
     }
 }

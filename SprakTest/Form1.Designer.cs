@@ -1,4 +1,4 @@
-namespace SprakTest
+﻿namespace SprakTest
 {
     partial class Form1
     {
@@ -53,19 +53,20 @@ namespace SprakTest
             this.TestTabs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TestTabs.ItemSize = new System.Drawing.Size(0, 21);
             this.TestTabs.Location = new System.Drawing.Point(0, 0);
-            this.TestTabs.Margin = new System.Windows.Forms.Padding(2);
+            this.TestTabs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TestTabs.Name = "TestTabs";
             this.TestTabs.SelectedIndex = 0;
-            this.TestTabs.Size = new System.Drawing.Size(800, 457);
+            this.TestTabs.Size = new System.Drawing.Size(982, 555);
             this.TestTabs.TabIndex = 0;
             // 
             // Profile
             // 
             this.Profile.Controls.Add(this.tableLayoutPanel1);
             this.Profile.Location = new System.Drawing.Point(4, 25);
+            this.Profile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Profile.Name = "Profile";
-            this.Profile.Padding = new System.Windows.Forms.Padding(3);
-            this.Profile.Size = new System.Drawing.Size(792, 428);
+            this.Profile.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Profile.Size = new System.Drawing.Size(974, 526);
             this.Profile.TabIndex = 0;
             this.Profile.Text = "Profile";
             this.Profile.UseVisualStyleBackColor = true;
@@ -82,27 +83,29 @@ namespace SprakTest
             this.tableLayoutPanel1.Controls.Add(this.age_box, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(786, 422);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(966, 518);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // gender_label
             // 
             this.gender_label.AutoSize = true;
             this.gender_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gender_label.Location = new System.Drawing.Point(4, 1);
+            this.gender_label.Location = new System.Drawing.Point(5, 1);
+            this.gender_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.gender_label.Name = "gender_label";
-            this.gender_label.Size = new System.Drawing.Size(160, 30);
+            this.gender_label.Size = new System.Drawing.Size(196, 37);
             this.gender_label.TabIndex = 0;
             this.gender_label.Text = "Kön";
             this.gender_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -110,7 +113,8 @@ namespace SprakTest
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(171, 4);
+            this.splitContainer1.Location = new System.Drawing.Point(210, 5);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -120,8 +124,9 @@ namespace SprakTest
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.woman_radiobutton);
-            this.splitContainer1.Size = new System.Drawing.Size(611, 24);
-            this.splitContainer1.SplitterDistance = 129;
+            this.splitContainer1.Size = new System.Drawing.Size(751, 29);
+            this.splitContainer1.SplitterDistance = 158;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 1;
             // 
             // man_radiobutton
@@ -130,8 +135,9 @@ namespace SprakTest
             this.man_radiobutton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.man_radiobutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.man_radiobutton.Location = new System.Drawing.Point(0, 0);
+            this.man_radiobutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.man_radiobutton.Name = "man_radiobutton";
-            this.man_radiobutton.Size = new System.Drawing.Size(129, 24);
+            this.man_radiobutton.Size = new System.Drawing.Size(158, 29);
             this.man_radiobutton.TabIndex = 0;
             this.man_radiobutton.TabStop = true;
             this.man_radiobutton.Text = "Man";
@@ -143,8 +149,9 @@ namespace SprakTest
             this.woman_radiobutton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.woman_radiobutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.woman_radiobutton.Location = new System.Drawing.Point(0, 0);
+            this.woman_radiobutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.woman_radiobutton.Name = "woman_radiobutton";
-            this.woman_radiobutton.Size = new System.Drawing.Size(478, 24);
+            this.woman_radiobutton.Size = new System.Drawing.Size(588, 29);
             this.woman_radiobutton.TabIndex = 0;
             this.woman_radiobutton.TabStop = true;
             this.woman_radiobutton.Text = "Kvinna";
@@ -154,9 +161,10 @@ namespace SprakTest
             // 
             this.age_label.AutoSize = true;
             this.age_label.Dock = System.Windows.Forms.DockStyle.Right;
-            this.age_label.Location = new System.Drawing.Point(87, 32);
+            this.age_label.Location = new System.Drawing.Point(104, 39);
+            this.age_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.age_label.Name = "age_label";
-            this.age_label.Size = new System.Drawing.Size(77, 389);
+            this.age_label.Size = new System.Drawing.Size(97, 478);
             this.age_label.TabIndex = 2;
             this.age_label.Text = "Ålder";
             // 
@@ -164,9 +172,10 @@ namespace SprakTest
             // 
             this.age_box.Dock = System.Windows.Forms.DockStyle.Left;
             this.age_box.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.age_box.Location = new System.Drawing.Point(171, 35);
+            this.age_box.Location = new System.Drawing.Point(210, 43);
+            this.age_box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.age_box.Name = "age_box";
-            this.age_box.Size = new System.Drawing.Size(77, 26);
+            this.age_box.Size = new System.Drawing.Size(103, 30);
             this.age_box.TabIndex = 3;
             this.age_box.Value = new decimal(new int[] {
             20,
@@ -176,12 +185,12 @@ namespace SprakTest
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 457);
+            this.ClientSize = new System.Drawing.Size(982, 555);
             this.Controls.Add(this.TestTabs);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(604, 495);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(799, 599);
             this.Name = "Form1";
             this.Text = "Språktest";
             this.Load += new System.EventHandler(this.Form1_Load);

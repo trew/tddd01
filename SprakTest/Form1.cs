@@ -24,16 +24,7 @@ namespace SprakTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadProfileTab();
             LoadTests();
-        }
-
-        private void LoadProfileTab()
-        {
-            TabPage newTab = new TabPage();
-            newTab.Name = "Profile";
-            newTab.Text = "Profile";
-            this.TestTabs.Controls.Add(newTab);
         }
 
         private void LoadTests()
@@ -206,6 +197,11 @@ namespace SprakTest
             TabPage tab = ((TabPage)((TrackBar)sender).Parent);
             Label l = (Label)tab.Controls.Find(tab.Name + "TrackbarLabel", false)[0];
             l.Text = ((TrackBar)sender).Value.ToString();
+        }
+
+        private void age_box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -231,6 +231,11 @@ namespace SprakTest
                 // test over, do something
                Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
                text1.Text = "Test complete!";
+               foreach (Control c in tab.Controls)
+               {
+                  if (c is TrackBar)
+                     tab.Controls.Remove((TrackBar) c);
+               }
                tab.Controls.Remove((Button)sender);
             }
 

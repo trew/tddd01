@@ -22,13 +22,8 @@ namespace SprakTest
          foreach (string wordPair in lines.ToList().GetRange(1, lines.Length - 2))
          {
             string[] words = wordPair.Split(':');
-            wordPairs.Insert(wordPairs.Count - 1, new KeyValuePair<string, string>(words[0], words[1]));
+            wordPairs.Insert(wordPairs.Count, new KeyValuePair<string, string>(words[0], words[1]));
 
-         }
-
-         foreach (KeyValuePair<string, string> kvp in wordPairs)
-         {
-            Console.WriteLine(kvp.Key + " " + kvp.Value);
          }
       }
 
@@ -47,9 +42,16 @@ namespace SprakTest
 
       public KeyValuePair<string, string> GetNextPair()
       {
-         KeyValuePair<string, string> firstPair = wordPairs.First();
-         wordPairs.RemoveAt(0);
-         return firstPair;
+          if (wordPairs.Count != 0)
+          {
+              KeyValuePair<string, string> firstPair = wordPairs.First();
+              wordPairs.RemoveAt(0);
+              return firstPair;
+          }
+          else
+          {
+              return new KeyValuePair<string, string>("", "");
+          }
       }
 
       private int calcLeven( string s, string t )

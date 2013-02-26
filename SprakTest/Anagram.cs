@@ -27,11 +27,6 @@ namespace SprakTest
                 wordPairs.Insert(wordPairs.Count, new KeyValuePair<string, string>(words[0], words[1]));
                 
             }
-
-            foreach (KeyValuePair<string, string> kvp in wordPairs)
-            {
-                Console.WriteLine(kvp.Key + " " + kvp.Value);
-            }
         }
 
         public bool Evaluate(string word1, string word2, int value)
@@ -52,6 +47,7 @@ namespace SprakTest
                 return new KeyValuePair<string,string>("","");
             }
         }
+
         private Boolean checkAnagram( string word1, string word2 )
         {
 

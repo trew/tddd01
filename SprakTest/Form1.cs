@@ -61,7 +61,9 @@ namespace SprakTest
                     tests.Add(fileName, new Anagram(fileName));
                     break;
 
-                    //TODO: add more tests
+                case "ls":
+                    tests.Add(fileName, new Levenshtein(fileName));
+                    break;
             }
         }
 
@@ -70,7 +72,8 @@ namespace SprakTest
             // Add tab
             TabPage newTab = new TabPage();
             newTab.Name = name;
-            newTab.Text = name;
+
+            newTab.Text = name.Split('\\')[1].Split('.')[0];
             this.TestTabs.Controls.Add(newTab);
             return newTab;
         }
@@ -183,6 +186,27 @@ namespace SprakTest
 
         }
 
+        private void EvalLeven(object sender, EventArgs e)
+        {
+            TabPage tab = ((TabPage)((Button)sender).Parent);
+            TrackBar l = (TrackBar)tab.Controls.Find(tab.Name + "Trackbar", false)[0];
+
+            // Evaluate answer, see if correct. Save stats
+            string word1 = ((Label)tab.Controls.Find(tab.Name + "text1", false)[0]).Text;
+            string word2 = ((Label)tab.Controls.Find(tab.Name + "text2", false)[0]).Text;
+
+            bool CorrectAnswer = tests[tab.Name].Evaluate(word1, word2, l.Value);
+            
+            KeyValuePair<string, string> nextPair = tests[tab.Name].GetNextPair();
+
+            if (nextPair.Key.Equals("") && nextPair.Value.Equals(""))
+            {
+                // test over, do something
+            }
+
+            ShowNewPair(tab, nextPair);
+        }
+
         void ShowNewPair(TabPage tab, KeyValuePair<string, string> kvp)
         {
             Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
@@ -190,15 +214,6 @@ namespace SprakTest
 
             Label text2 = (Label)tab.Controls.Find(tab.Name + "text2", false)[0];
             text2.Text = kvp.Value;
-        }
-
-        private void EvalLeven(object sender, EventArgs e)
-        {
-            TabPage tab = ((TabPage)((Button)sender).Parent);
-            TrackBar l = (TrackBar)tab.Controls.Find(tab.Name + "Trackbar", false)[0];
-
-            // Evaluate answer, see if correct. Save stats
-            Console.WriteLine(l.Value);
         }
 
         private void ChangeTrackLabel(object sender, EventArgs e)

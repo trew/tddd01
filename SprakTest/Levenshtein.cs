@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +11,17 @@ namespace SprakTest
       {
       }
 
-
       public override bool Evaluate(string word1, string word2, int value)
       {
          int result = calcLeven(word1, word2);
          if (value == result)
          {
+            addAnswer(word1 + " : " + word2 + " Correct");
             return true;
          }
          else
          {
+            addAnswer(word1 + " : " + word2 + " Wrong");
             return false;
          }
       }

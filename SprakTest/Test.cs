@@ -8,10 +8,12 @@ namespace SprakTest
     abstract class Test
     {
         private List<KeyValuePair<string, string>> wordPairs;
+        private List<string> answers;
 
         public Test( string fileName )
         {
             wordPairs = new List<KeyValuePair<string, string>>();
+            answers = new List<string>();
             LoadWords(fileName);
         }
 
@@ -27,6 +29,13 @@ namespace SprakTest
             }
         }
         public abstract bool Evaluate(string word1, string word2, int value);
+
+        public List<String> Answers { get { return Answers; } }
+
+        public void addAnswer(string answer)
+        {
+            answers.Add(answer);
+        }
 
         public virtual KeyValuePair<string, string> GetNextPair()
         {

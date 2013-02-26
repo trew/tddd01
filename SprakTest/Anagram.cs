@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +18,13 @@ namespace SprakTest
             answer = (value == 0) ? false : true;
             if (isAnagram == answer)
             {
-               return true;
+                addAnswer(word1 + " : " + word2 + " Correct");
+                return true;
             }
             else
             {
-               return false;
+                addAnswer(word1 + " : " + word2 + " Wrong");
+                return false;
             }
         }
 

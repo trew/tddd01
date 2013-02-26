@@ -24,6 +24,9 @@ namespace SprakTest
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             LoadTests();
         }
 
@@ -180,6 +183,19 @@ namespace SprakTest
             if (nextPair.Key.Equals("") && nextPair.Value.Equals(""))
             {
                 // test over, do something
+               Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
+               text1.Text = "Test complete!";
+               List<Button> buttons = new List<Button>();
+               foreach (Control c in tab.Controls)
+               {
+                  if (c is Button)
+                     buttons.Add((Button) c);
+               }
+               foreach (Button b in buttons)
+               {
+                  tab.Controls.Remove(b);
+               }
+               //tab.Controls.Remove((Button)sender);
             }
         }
 
@@ -202,6 +218,9 @@ namespace SprakTest
             if (nextPair.Key.Equals("") && nextPair.Value.Equals(""))
             {
                 // test over, do something
+               Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
+               text1.Text = "Test complete!";
+               tab.Controls.Remove((Button)sender);
             }
 
         }

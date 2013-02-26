@@ -13,19 +13,21 @@ namespace SprakTest
     public partial class Form1 : Form
     {
         private TabControl itemsTab;
-        private Dictionary<string, ITest> tests;
+        private Dictionary<string, Test> tests;
 
         public Form1()
         {
             InitializeComponent();
-            tests = new Dictionary<string, ITest>();
 
-            
+            tests = new Dictionary<string, Test>();
            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             LoadTests();
         }
 
@@ -166,8 +168,9 @@ namespace SprakTest
             text1.Text = "Klicka på en knapp";
             text2.Text = "för att starta testet";
 
+            KeyValuePair<string, string> nextPair = tests[newTab.Name].GetNextPair();
+            ShowNewPair(newTab, nextPair);
         }
-
 
         private void EvalAnagram(object sender, EventArgs e)
         {
@@ -191,6 +194,19 @@ namespace SprakTest
             if (nextPair.Key.Equals("") && nextPair.Value.Equals(""))
             {
                 // test over, do something
+               Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
+               text1.Text = "Test complete!";
+               List<Button> buttons = new List<Button>();
+               foreach (Control c in tab.Controls)
+               {
+                  if (c is Button)
+                     buttons.Add((Button) c);
+               }
+               foreach (Button b in buttons)
+               {
+                  tab.Controls.Remove(b);
+               }
+               //tab.Controls.Remove((Button)sender);
             }
         }
 
@@ -213,6 +229,9 @@ namespace SprakTest
             if (nextPair.Key.Equals("") && nextPair.Value.Equals(""))
             {
                 // test over, do something
+               Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
+               text1.Text = "Test complete!";
+               tab.Controls.Remove((Button)sender);
             }
 
         }

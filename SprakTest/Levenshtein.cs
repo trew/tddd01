@@ -5,53 +5,25 @@ using System.Text;
 
 namespace SprakTest
 {
-   class Levenshtein : ITest
+   class Levenshtein : Test
    {
-      private List<KeyValuePair<string, string>> wordPairs;
-
-      public Levenshtein( string fileName )
+      public Levenshtein( string fileName ): base(fileName)
       {
-         wordPairs = new List<KeyValuePair<string, string>>();
-         LoadWords(fileName);
       }
 
-      public void LoadWords( string fileName )
-      {
-         string[] lines = System.IO.File.ReadAllLines(fileName);
-
-         foreach (string wordPair in lines.ToList().GetRange(1, lines.Length - 2))
-         {
-            string[] words = wordPair.Split(':');
-            wordPairs.Insert(wordPairs.Count, new KeyValuePair<string, string>(words[0], words[1]));
-
-         }
-      }
-
-      public bool Evaluate( string word1, string word2, int value )
+      public override bool Evaluate(string word1, string word2, int value)
       {
          int result = calcLeven(word1, word2);
          if (value == result)
          {
+            addAnswer(word1 + " : " + word2 + " Correct");
             return true;
          }
          else
          {
+            addAnswer(word1 + " : " + word2 + " Wrong");
             return false;
          }
-      }
-
-      public KeyValuePair<string, string> GetNextPair()
-      {
-          if (wordPairs.Count != 0)
-          {
-              KeyValuePair<string, string> firstPair = wordPairs.First();
-              wordPairs.RemoveAt(0);
-              return firstPair;
-          }
-          else
-          {
-              return new KeyValuePair<string, string>("", "");
-          }
       }
 
       private int calcLeven( string s, string t )

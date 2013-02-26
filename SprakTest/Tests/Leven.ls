@@ -1,4 +1,13 @@
-﻿1->12
-APA:BANAN
-Volvo:Saab
-Sean:Banan
+﻿0->25
+apa:apa
+baka:kaka
+trodde:snodde
+äta:räka
+trycka:smycke
+eskalera:minimera
+omtyckt:otakt
+mamma:amalgam
+mustage:stelbent
+människoätare:koskötare
+arbetsmarknadsutbildning:marknadsföring
+tillsättningsförfarande:behovstillfredsställelse

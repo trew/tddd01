@@ -59,10 +59,11 @@ namespace SprakTest
 
         private Boolean checkAnagram( string word1, string word2 )
         {
+           string lowercase_word1 = word1.ToLower();
+           string lowercase_word2 = word2.ToLower();
 
-
-           char[] a = word1.ToCharArray();
-           char[] b = word2.ToCharArray();
+           char[] a = lowercase_word1.ToCharArray();
+           char[] b = lowercase_word2.ToCharArray();
            if (a.Length != b.Length)
            {
               return false;

@@ -208,8 +208,7 @@ namespace SprakTest
                    tab.Controls.Remove(b);
                 }
                 //tab.Controls.Remove((Button)sender);
-                int gender = man_radiobutton.Checked ? 0 : 1;
-                logger.save(tab.Name, (int)age_box.Value, gender, tests[tab.Name]);
+                logger.save(tab.Name, (int)age_box.Value, man_radiobutton.Checked, tests[tab.Name]);
             }
         }
 
@@ -240,6 +239,7 @@ namespace SprakTest
                      tab.Controls.Remove((TrackBar) c);
                }
                tab.Controls.Remove((Button)sender);
+               logger.save(tab.Name, (int)age_box.Value, man_radiobutton.Checked, tests[tab.Name]);
             }
 
         }

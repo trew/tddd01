@@ -8,11 +8,11 @@ namespace SprakTest
 {
     class Logger
     {
-        public void save(string name, int age, int gender, Test test)
+        public void save(string name, int age, bool male, Test test)
         {
             string fileName = name.Split('\\')[1].Split('.')[0];
             fileName += "_";
-            fileName += gender == 0 ? "M" : "F";
+            fileName += male ? "M" : "F";
             fileName += age;
             fileName += ".txt";
             try
@@ -23,7 +23,7 @@ namespace SprakTest
                 StreamWriter sw = new StreamWriter(fs);
                 sw.WriteLine("Date: " + DateTime.Now);
                 sw.WriteLine("Test: " + name);
-                sw.WriteLine("Gender: " + (gender == 0 ? "Male" : "Female"));
+                sw.WriteLine("Gender: " + (male ? "Male" : "Female"));
                 sw.WriteLine("Age: " + age);
                 foreach (string answer in test.Answers)
                 {

@@ -19,6 +19,8 @@ namespace SprakTest
         private int screenWidth;
         private int screenHeight;
 
+        private Timer wordTimer;
+
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +29,11 @@ namespace SprakTest
             logger = new Logger();
             screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
             screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
+
+            wordTimer = new Timer();
+            wordTimer.Interval = 20000;
+            wordTimer.Tick += new EventHandler(timeoutGetNext);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -180,9 +187,12 @@ namespace SprakTest
 
         private void EvalAnagram(object sender, EventArgs e)
         {
+            wordTimer.Stop();
+            wordTimer.Start();
+            
             // Parent Tab
             TabPage tab = ((TabPage)((Button)sender).Parent);
-
+            
             // Evaluate answer, see if correct. Save stats
             string word1 = ((Label)tab.Controls.Find(tab.Name + "text1", false)[0]).Text;
             string word2 = ((Label)tab.Controls.Find(tab.Name + "text2", false)[0]).Text;
@@ -197,6 +207,8 @@ namespace SprakTest
 
             if (nextPair.Key.Equals("") && nextPair.Value.Equals(""))
             {
+                wordTimer.Stop();
+
                 // test over, do something
                 Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
                 text1.Text = "Test complete!";
@@ -217,6 +229,9 @@ namespace SprakTest
 
         private void EvalLeven(object sender, EventArgs e)
         {
+            wordTimer.Stop();
+            wordTimer.Start();
+
             TabPage tab = ((TabPage)((Button)sender).Parent);
             TrackBar l = (TrackBar)tab.Controls.Find(tab.Name + "Trackbar", false)[0];
 
@@ -231,6 +246,8 @@ namespace SprakTest
 
             if (nextPair.Key.Equals("") && nextPair.Value.Equals(""))
             {
+                wordTimer.Stop();
+
                 // test over, do something
                 Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
                 text1.Text = "Test complete!";
@@ -257,6 +274,20 @@ namespace SprakTest
             Label text2 = (Label)tab.Controls.Find(tab.Name + "text2", false)[0];
             text2.Text = kvp.Value;
         }
+
+        private void timeoutGetNext(object Sender, EventArgs e)
+        {
+            TabPage tab = this.TestTabs.SelectedTab;
+
+            string word1 = ((Label)tab.Controls.Find(tab.Name + "text1", false)[0]).Text;
+            string word2 = ((Label)tab.Controls.Find(tab.Name + "text2", false)[0]).Text;
+
+            tests[tab.Name].addAnswer(word1 + " : " + word2 + " -- TIMED OUT -- ");
+
+            KeyValuePair<string, string> nextPair = tests[tab.Name].GetNextPair();
+            ShowNewPair(tab, nextPair);
+        }
+
 
         private void ChangeTrackLabel(object sender, EventArgs e)
         {

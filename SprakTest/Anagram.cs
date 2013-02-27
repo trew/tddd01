@@ -16,6 +16,7 @@ namespace SprakTest
         {
             bool isAnagram = checkAnagram(word1, word2) ;
             bool answer;
+            // if value is 0 then it indicates false
             answer = (value == 0) ? false : true;
             if (isAnagram == answer)
             {

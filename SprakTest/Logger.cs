@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +14,8 @@ namespace SprakTest
             fileName += "_";
             fileName += male ? "M" : "F";
             fileName += age;
+            fileName += "_";
+            fileName += DateTime.Now.Millisecond;
             fileName += ".txt";
             try
             {

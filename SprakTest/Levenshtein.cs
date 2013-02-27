@@ -9,6 +9,7 @@ namespace SprakTest
    {
       public Levenshtein( string fileName ): base(fileName)
       {
+         addAnswer("Results are in the form \"word1\" : \" word2\" answer given : correct answer");
       }
 
       public override bool Evaluate(string word1, string word2, int value)

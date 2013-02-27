@@ -9,6 +9,7 @@ namespace SprakTest
     {
         public Anagram(string fileName): base(fileName)
         {
+           addAnswer("Results are shown as \"word1\" : \"word2\" if the answer was correct or not");
         }
 
         public override bool Evaluate(string word1, string word2, int value)

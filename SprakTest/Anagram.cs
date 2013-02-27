@@ -18,16 +18,12 @@ namespace SprakTest
             bool answer;
             // if value is 0 then it indicates false
             answer = (value == 0) ? false : true;
-            if (isAnagram == answer)
-            {
-                addAnswer(word1 + " : " + word2 + " Correct");
-                return true;
-            }
-            else
-            {
-                addAnswer(word1 + " : " + word2 + " Wrong");
-                return false;
-            }
+            string log = word1 + " : " + word2 +
+                         " -- Answer: " + answer +
+                         " : Correct: " + isAnagram + " : ";
+            log += (isAnagram == answer ? "CORRECT" : "WRONG");
+            addAnswer(log);
+            return isAnagram == answer;
         }
 
         private bool checkAnagram( string word1, string word2 )

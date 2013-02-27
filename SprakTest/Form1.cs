@@ -16,12 +16,17 @@ namespace SprakTest
         private Dictionary<string, Test> tests;
         private Logger logger;
 
+        private int screenWidth;
+        private int screenHeight;
+
         public Form1()
         {
             InitializeComponent();
 
             tests = new Dictionary<string, Test>();
-            logger = new Logger();   
+            logger = new Logger();
+            screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
+            screenHeight = Screen.PrimaryScreen.WorkingArea.Height;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -94,7 +99,7 @@ namespace SprakTest
                 
                     // Trackbar
                     tb = new TrackBar();
-                    tb.Location = new System.Drawing.Point(250, 350);
+                    tb.Location = new System.Drawing.Point(screenWidth / 2 - 250, 350);
                     tb.Name = newTab.Name + "Trackbar";
                     tb.Width = 500;
                     tb.Minimum = int.Parse(values[0]);
@@ -127,7 +132,7 @@ namespace SprakTest
                     int i = 0;
                     int numButtons = controls.Length;
                     int totalButtonWidth = (numButtons * buttonSize.Width) + (((numButtons - 1) * 10));
-                    int leftStartPos = (1000 - totalButtonWidth)/2;
+                    int leftStartPos = (screenWidth - totalButtonWidth)/2;
 
                     foreach (string buttonText in controls)
                     {
@@ -151,7 +156,7 @@ namespace SprakTest
             Label text1 = new Label();
             text1.BorderStyle = BorderStyle.FixedSingle;
             text1.Name = newTab.Name + "text1";
-            text1.Location = new System.Drawing.Point(150, 50);
+            text1.Location = new System.Drawing.Point(screenWidth / 2 - 350, 50);
             text1.Size = new Size(700, 70);
             text1.TextAlign = ContentAlignment.MiddleCenter;
             text1.Font = new Font(text1.Font.FontFamily, 30f);
@@ -160,7 +165,7 @@ namespace SprakTest
             Label text2 = new Label();
             text2.BorderStyle = BorderStyle.FixedSingle;
             text2.Name = newTab.Name + "text2";
-            text2.Location = new System.Drawing.Point(150, 150);
+            text2.Location = new System.Drawing.Point(screenWidth / 2 - 350, 150);
             text2.Size = new Size(700, 70);
             text2.TextAlign = ContentAlignment.MiddleCenter;
             text2.Font = new Font(text2.Font.FontFamily, 30f);

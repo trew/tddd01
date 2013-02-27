@@ -47,7 +47,7 @@ namespace SprakTest
             {
                 TabPage newTab = AddTab(fileName);
                 AddTest(fileName);
-                
+
                 AddContentToTab(newTab, fileName);
             }
         }
@@ -96,7 +96,7 @@ namespace SprakTest
                 case "ls":
                     string[] values = controls[0].Split('-');
                     values[1] = values[1].Remove(0, 1);
-                
+
                     // Trackbar
                     tb = new TrackBar();
                     tb.Location = new System.Drawing.Point(screenWidth / 2 - 250, 350);
@@ -118,7 +118,7 @@ namespace SprakTest
 
                     // Button
                     b = new Button();
-                    b.Location = new System.Drawing.Point(tb.Location.X - (buttonSize.Width/2) + (tb.Width / 2), tb.Location.Y + 60);
+                    b.Location = new System.Drawing.Point(tb.Location.X - (buttonSize.Width / 2) + (tb.Width / 2), tb.Location.Y + 60);
                     b.Name = "button1";
                     b.Size = buttonSize;
                     b.Text = "Nästa";
@@ -132,7 +132,7 @@ namespace SprakTest
                     int i = 0;
                     int numButtons = controls.Length;
                     int totalButtonWidth = (numButtons * buttonSize.Width) + (((numButtons - 1) * 10));
-                    int leftStartPos = (screenWidth - totalButtonWidth)/2;
+                    int leftStartPos = (screenWidth - totalButtonWidth) / 2;
 
                     foreach (string buttonText in controls)
                     {
@@ -154,7 +154,7 @@ namespace SprakTest
 
             // Texts
             Label text1 = new Label();
-            text1.BorderStyle = BorderStyle.FixedSingle;
+            text1.BorderStyle = BorderStyle.Fixed3D;
             text1.Name = newTab.Name + "text1";
             text1.Location = new System.Drawing.Point(screenWidth / 2 - 350, 50);
             text1.Size = new Size(700, 70);
@@ -163,7 +163,7 @@ namespace SprakTest
             newTab.Controls.Add(text1);
 
             Label text2 = new Label();
-            text2.BorderStyle = BorderStyle.FixedSingle;
+            text2.BorderStyle = BorderStyle.Fixed3D;
             text2.Name = newTab.Name + "text2";
             text2.Location = new System.Drawing.Point(screenWidth / 2 - 350, 150);
             text2.Size = new Size(700, 70);
@@ -186,12 +186,10 @@ namespace SprakTest
             // Evaluate answer, see if correct. Save stats
             string word1 = ((Label)tab.Controls.Find(tab.Name + "text1", false)[0]).Text;
             string word2 = ((Label)tab.Controls.Find(tab.Name + "text2", false)[0]).Text;
-            
+
             int answer = ((Button)sender).Text.Equals("Ja") ? 1 : 0;
 
             bool CorrectAnswer = tests[tab.Name].Evaluate(word1, word2, answer);
-            if (CorrectAnswer)
-                Console.WriteLine("Rätt svar woho");
 
             // Fetch next word-pair and show it
             KeyValuePair<string, string> nextPair = tests[tab.Name].GetNextPair();
@@ -205,14 +203,14 @@ namespace SprakTest
                 List<Button> buttons = new List<Button>();
                 foreach (Control c in tab.Controls)
                 {
-                   if (c is Button)
-                      buttons.Add((Button) c);
+                    if (c is Button)
+                        buttons.Add((Button)c);
                 }
                 foreach (Button b in buttons)
                 {
-                   tab.Controls.Remove(b);
+                    tab.Controls.Remove(b);
                 }
-                //tab.Controls.Remove((Button)sender);
+
                 logger.save(tab.Name, (int)age_box.Value, man_radiobutton.Checked, tests[tab.Name]);
             }
         }
@@ -227,8 +225,6 @@ namespace SprakTest
             string word2 = ((Label)tab.Controls.Find(tab.Name + "text2", false)[0]).Text;
 
             bool CorrectAnswer = tests[tab.Name].Evaluate(word1, word2, l.Value);
-            if (CorrectAnswer)
-                Console.WriteLine("Rätt svar woho");
 
             KeyValuePair<string, string> nextPair = tests[tab.Name].GetNextPair();
             ShowNewPair(tab, nextPair);
@@ -236,15 +232,19 @@ namespace SprakTest
             if (nextPair.Key.Equals("") && nextPair.Value.Equals(""))
             {
                 // test over, do something
-               Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
-               text1.Text = "Test complete!";
-               foreach (Control c in tab.Controls)
-               {
-                  if (c is TrackBar)
-                     tab.Controls.Remove((TrackBar) c);
-               }
-               tab.Controls.Remove((Button)sender);
-               logger.save(tab.Name, (int)age_box.Value, man_radiobutton.Checked, tests[tab.Name]);
+                Label text1 = (Label)tab.Controls.Find(tab.Name + "text1", false)[0];
+                text1.Text = "Test complete!";
+                foreach (Control c in tab.Controls)
+                {
+                    if (c is TrackBar)
+                        tab.Controls.Remove((TrackBar)c);
+                }
+                tab.Controls.Remove((Button)sender);
+
+                Label trackbarLabel = (Label)tab.Controls.Find(tab.Name + "TrackbarLabel", false)[0];
+                tab.Controls.Remove(trackbarLabel);
+
+                logger.save(tab.Name, (int)age_box.Value, man_radiobutton.Checked, tests[tab.Name]);
             }
 
         }

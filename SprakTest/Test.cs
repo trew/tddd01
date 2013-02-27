@@ -21,7 +21,7 @@ namespace SprakTest
         {
             string[] lines = System.IO.File.ReadAllLines(fileName);
 
-            foreach (string wordPair in lines.ToList().GetRange(1, lines.Length - 2))
+            foreach (string wordPair in lines.ToList().GetRange(1, lines.Length - 1))
             {
                 string[] words = wordPair.Split(':');
                 wordPairs.Insert(wordPairs.Count, new KeyValuePair<string, string>(words[0], words[1]));

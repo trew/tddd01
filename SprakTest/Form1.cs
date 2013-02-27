@@ -150,8 +150,8 @@ namespace SprakTest
             Label text1 = new Label();
             text1.BorderStyle = BorderStyle.FixedSingle;
             text1.Name = newTab.Name + "text1";
-            text1.Location = new System.Drawing.Point(200, 50);
-            text1.Size = new Size(600, 70);
+            text1.Location = new System.Drawing.Point(150, 50);
+            text1.Size = new Size(700, 70);
             text1.TextAlign = ContentAlignment.MiddleCenter;
             text1.Font = new Font(text1.Font.FontFamily, 30f);
             newTab.Controls.Add(text1);
@@ -159,8 +159,8 @@ namespace SprakTest
             Label text2 = new Label();
             text2.BorderStyle = BorderStyle.FixedSingle;
             text2.Name = newTab.Name + "text2";
-            text2.Location = new System.Drawing.Point(200, 150);
-            text2.Size = new Size(600, 70);
+            text2.Location = new System.Drawing.Point(150, 150);
+            text2.Size = new Size(700, 70);
             text2.TextAlign = ContentAlignment.MiddleCenter;
             text2.Font = new Font(text2.Font.FontFamily, 30f);
             newTab.Controls.Add(text2);

@@ -15,15 +15,13 @@ namespace SprakTest
       public override bool Evaluate(string word1, string word2, int value)
       {
          int result = calcLeven(word1, word2);
-         addAnswer(word1 + " : " + word2 + " " + value + " : " + result);
-         if (value == result)
-         {
-            return true;
-         }
-         else
-         {
-            return false;
-         }
+         string log = word1 + " : " + word2 +
+                      " -- Answer: " + value +
+                      " : Correct: " + result +
+                      " : Difference: ";
+         log += Math.Max(result, value) - Math.Min(result, value);
+         addAnswer(log);
+         return value == result;
       }
 
       private int calcLeven( string s, string t )

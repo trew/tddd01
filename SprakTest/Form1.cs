@@ -46,7 +46,7 @@ namespace SprakTest
 
         private void LoadTests()
         {
-            // Fetch tests from Tests-folder
+            // Fetch tests from tests-folder
             string[] filePaths = Directory.GetFiles(@"Tests\");
 
             // Create one tab per test
